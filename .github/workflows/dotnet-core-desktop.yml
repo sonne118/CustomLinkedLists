@@ -82,7 +82,7 @@ jobs:
          cd artifact 
      
     - name: Pack  
-      run: dotnet pack $env:PROJECT_NAME --configuration Release --no-build --no-restore  -p:PackageVersion= 1.0.6 
+      run: dotnet pack $env:PROJECT_NAME --configuration Release --no-build --no-restore  
     
     - name: Upload Artifact    
       uses: actions/upload-artifact@v2
