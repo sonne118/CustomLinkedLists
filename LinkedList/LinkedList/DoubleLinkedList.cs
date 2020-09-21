@@ -35,7 +35,7 @@ namespace LinkedList
                 node.Next = _node;
                 _node.Prev = node;
                 _node.list = this; // you can check  Which owns this Node?
-            }                      // It can be used  afte exist Contain method
+            }                      // It can be used  after return result of Contain method
             count++;
         }
 
