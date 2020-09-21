@@ -1,0 +1,81 @@
+name: .NET Core Desktop
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Release]
+
+    runs-on: windows-latest  
+    # environment variables
+    env:
+      CORE_DIRECTORY : ${{ github.workspace }} 
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+      ARTIFACTS: LinkeList-artifact                                       
+      TEST_PROJECT_PATH: ${{ github.workspace }}\LinkedList\LinkedList.Test\LinkedList.Test.csproj                            
+      PROJECT_NAME: ${{ github.workspace }}\LinkedList\LinkedList\LinkedList.csproj 
+      PROJECT_PATH : ${{ github.workspace }}\LinkedList\LinkedList\
+      NETCORE_VERSION: '3.1.101' 
+      BRANCH :  data_build                               
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{env.NETCORE_VERSION}}
+ 
+    # Place where will be saved buil of project
+    - name: Create build folder
+      run: |
+        mkdir -p ${{ env.CORE_DIRECTORY }}\build\                        
+        cd build                        
+     
+     # Build application
+    - name: Build the application
+      run: dotnet build  $env:PROJECT_NAME --configuration $env:Configuration   
+      env:
+        Configuration: ${{ matrix.configuration }}
+        
+      # Execute all unit tests in the solution
+    - name: Execute unit tests
+      run: dotnet test $env:TEST_PROJECT_PATH   
+    
+      #Publish the application and save in folder "build"
+    - name: Publish the application      
+      run: dotnet publish $env:PROJECT_NAME --configuration $env:Configuration -o '${{ env.CORE_DIRECTORY }}\build' 
+      env:
+        Configuration: ${{ matrix.configuration }}
+        
+      # Check Is files of build in folder?  
+    - name: Check  files of build or debug                                    
+      run: dir  ${{ env.CORE_DIRECTORY }}\build 
+      
+       # Deploy  files of build to branch                                                
+    - name: Deploy library to branch
+      uses: s0/git-publish-subdir-action@master
+      env:
+        REPO: self
+        BRANCH: ${{env.BRANCH}}
+        FOLDER: ${{ env.CORE_DIRECTORY }}\build
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        
+        #  Example of creating artifacts
+    - name:  production artifacts
+      uses: actions/upload-artifact@v2
+      with:	
+        name: ${{ env.ARTIFACTS }}	
+        path: ${{ env.CORE_DIRECTORY }}\build\**\*
+
