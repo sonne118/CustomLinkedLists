@@ -24,8 +24,8 @@ jobs:
       PROJECT_NAME: ${{ github.workspace }}\LinkedList\LinkedList\LinkedList.csproj 
       PROJECT_PATH : ${{ github.workspace }}\LinkedList\LinkedList\
       NETCORE_VERSION: '3.1.101'
-      APP_BUILD: '1.0.2' 
-      REALEASE_TAG: 'v1.0.5'
+      APP_BUILD: '1.0.3' 
+      REALEASE_TAG: 'v1.0.6'
       BRANCH :  data_build                            
     steps:
     - name: Checkout
@@ -82,7 +82,7 @@ jobs:
          cd artifact 
      
     - name: Pack  
-      run: dotnet pack -v normal -c Release --no-restore --include-symbols --include-source -p:PackageVersion=$GITHUB_RUN_ID $env:PROJECT_NAME
+      run: dotnet pack -v normal -c Release --no-restore --include-symbols --include-source -p:PackageVersion=$env.REALEASE_TAG $env:PROJECT_NAME
     
     - name: Upload Artifact    
       uses: actions/upload-artifact@v2
