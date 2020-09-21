@@ -24,7 +24,7 @@ jobs:
       PROJECT_NAME: ${{ github.workspace }}\LinkedList\LinkedList\LinkedList.csproj 
       PROJECT_PATH : ${{ github.workspace }}\LinkedList\LinkedList\
       NETCORE_VERSION: '3.1.101'
-      APP_VERSION: '1.0.2' 
+      APP_BUILD: '1.0.2' 
       REALEASE_TAG: 'v1.0.5'
       BRANCH :  data_build                            
     steps:
