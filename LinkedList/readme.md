@@ -1,13 +1,14 @@
                                DOCUMENTATION
  
-1. In this libarary was realized Singly and Double linked list
+1. In this libarary Singly and Double linked list was implemented
  
  2. In order to do instance (SinglyLinkedList or DoubleLinkedList) you should indicate generic (type) which 
       will used for saving values
 	  For example:
 	  
-       var slink = new SinglyLinkedList<string>();
-       var dlink = new DoubleLinkedList<string>();
+	         var slink = new SinglyLinkedList<string>();
+		 var dlink = new DoubleLinkedList<string>();
+ 
  
 2. Using this Linked list you can use several  Methods :
 
@@ -24,7 +25,7 @@
 			Mike
 			Anna
   
-    b.  Method Contains(T value) - checking  Have value whether in list?
+    b.  Method Contains(T value) - checking  whether list have the value?
   
            for checking single linked list:
            SinglyNode<string> slink1 = sLink.Contains("Piter");
@@ -39,8 +40,8 @@
 		   DoubleNode<string> dlink1 = dLink.Contains("Piter");
            DoubleNode<string> dlink2 = dLink.Contains("Anna");
 		   		   
-		   dlink1.Value == "Piter");
-           dlink2.Value == "Anna");
+		   dlink1.Value == "Piter";
+           dlink2.Value == "Anna";
 		   dlink1.Next == ldink2
 		   ldink2.Prev = dlink1;
   
@@ -54,19 +55,21 @@
       
     d.  Method ValueArray()   - returning Array of value of Linked list	
 
-          String.Join(" , ", link1.ValueArray())  
+            slink.Add("Piter");
+            slink.Add("Mike");
+            slink.Add("Anna");
+	    String.Join(" , ", link1.ValueArray())  
 		  
 		  you can watch such result when outputing to the console
 		  
 		  Piter, Mike, Anna
   
   I.   In this Library  was implemented interface IEnumerable
+       It can give you possibilty to iterate Linked list using loop as foreach
   
-  II.  It can give you possibilty to iterate Linked list using loop as foreach
+  II.  Also  "test cases" was implemented
   
-  III. Also was realized deep "test cases"
-  
-  IV.  All classes in this library is sealed so you can not override or inherit it.
+  III.  All classes in this library is sealed so you can not override or inherit it.
 
 	  
 	   
