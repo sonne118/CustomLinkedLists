@@ -49,7 +49,7 @@
            
 		   slink1.Remove("Piter")
 		   dlink1.Remove("Piter")
-		   Realized (Single and Double) Linked list is different
+		   Implementation (Single and Double) Linked list is different
 		   SingleLinkedList class - one-way links
 		   DoubleLinkedList class - two way links
       
