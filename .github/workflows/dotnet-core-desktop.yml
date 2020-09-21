@@ -78,11 +78,11 @@ jobs:
     - name: create folder of Artifacts
       run: |	
          mkdir -p ${{ env.CORE_DIRECTORY }}\artifact
-         #echo Something pass to artifacts > ${{ env.CORE_DIRECTORY }}\artifact\world.txt
+         echo Something pass to artifacts > ${{ env.CORE_DIRECTORY }}\artifact\world.txt 
          cd artifact 
      
     - name: Pack  
-      run: dotnet pack $env:PROJECT_NAME --configuration Release --no-build --no-restore  
+      run: dotnet pack $env:PROJECT_NAME --configuration Release --no-build --no-restore  -o ${{ env.CORE_DIRECTORY }}\artifact
     
     - name: Upload Artifact    
       uses: actions/upload-artifact@v2
