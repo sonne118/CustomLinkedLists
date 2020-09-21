@@ -25,7 +25,7 @@ jobs:
       PROJECT_PATH : ${{ github.workspace }}\LinkedList\LinkedList\
       NETCORE_VERSION: '3.1.101'
       APP_VERSION: '1.0.2' 
-      REALEASE_TAG: 'v1.0.4'
+      REALEASE_TAG: 'v1.0.5'
       BRANCH :  data_build                            
     steps:
     - name: Checkout
@@ -81,11 +81,10 @@ jobs:
          #echo Something pass to artifacts > ${{ env.CORE_DIRECTORY }}\artifact\world.txt
          cd artifact 
      
-    - name: Pack
-      if: matrix.os == ' windows-latest'
+    - name: Pack  
       run: dotnet pack -v normal -c Release --no-restore --include-symbols --include-source -p:PackageVersion=$GITHUB_RUN_ID $env:PROJECT_NAME
-    - name: Upload Artifact
-      if: matrix.os == ' windows-latest'
+    
+    - name: Upload Artifact    
       uses: actions/upload-artifact@v2
       with:
         name: nupkg
