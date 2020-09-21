@@ -6,7 +6,7 @@
       will used for saving values
 	  For example:
 	  
-	         var slink = new SinglyLinkedList<string>();
+	     var slink = new SinglyLinkedList<string>();
 		 var dlink = new DoubleLinkedList<string>();
  
  
