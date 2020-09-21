@@ -25,7 +25,7 @@ jobs:
       PROJECT_PATH : ${{ github.workspace }}\LinkedList\LinkedList\
       NETCORE_VERSION: '3.1.101'
       APP_BUILD: '1.0.4' 
-      RELEASE_TAG: 'v1.0.8'
+      RELEASE_TAG: 'v1.0.9'
       BRANCH :  data_build                            
     steps:
     - name: Checkout
@@ -70,7 +70,7 @@ jobs:
       uses: s0/git-publish-subdir-action@master
       env:
         REPO: self
-        BRANCH: ${{env.BRANCH}}--${{env.APP_VERSION}}  
+        BRANCH: ${{env.BRANCH}}--${{env.APP_BUILD}}  
         FOLDER: ${{ env.CORE_DIRECTORY }}\build
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         
@@ -79,16 +79,19 @@ jobs:
       run: |	
          mkdir -p ${{ env.CORE_DIRECTORY }}\artifact        
          cd artifact 
-     
+      
+        #Paking project
     - name: Pack  
       run: dotnet pack $env:PROJECT_NAME --configuration Release --no-build --no-restore  -o ${{ env.CORE_DIRECTORY }}\artifact
     
+      # Upload artifacts 
     - name: Upload Artifact    
       uses: actions/upload-artifact@v2
       with:
         name: nupkg
         path: ${{ env.CORE_DIRECTORY }}\artifact\*.nupkg              
-        
+      
+      # Automatically create new release
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
