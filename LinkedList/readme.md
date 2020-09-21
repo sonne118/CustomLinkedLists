@@ -31,8 +31,8 @@
            SinglyNode<string> slink1 = sLink.Contains("Piter");
            SinglyNode<string> slink2 = sLink.Contains("Anna");
 		   		   
-		   slink1.Value == "Piter");
-           slink2.Value == "Anna");
+		   slink1.Value == "Piter";
+           slink2.Value == "Anna";
 		   slink1.Next == link2
 		   
 		   for checking double linked list:
