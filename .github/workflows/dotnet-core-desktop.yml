@@ -95,9 +95,9 @@ jobs:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       with:
           tag_name: ${{env.REALEASE_TAG }}
-          release_name: Release ${{ github.ref }}
+          release_name: Release ${{ env.REALEASE_TAG }}
           body: |
-            Changes in this Release          
-            - Second Change
+            Changes in this new Release          
+            - four Changes
           draft: false
           prerelease: false  
