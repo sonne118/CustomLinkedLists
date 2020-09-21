@@ -58,7 +58,7 @@
             slink.Add("Piter");
             slink.Add("Mike");
             slink.Add("Anna");
-	    String.Join(" , ", link1.ValueArray())  
+	        String.Join(" , ", link1.ValueArray())  
 		  
 		  you can watch such result when outputing to the console
 		  
