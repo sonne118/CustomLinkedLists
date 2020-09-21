@@ -73,10 +73,16 @@ jobs:
         FOLDER: ${{ env.CORE_DIRECTORY }}\build
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         
+        
+    - name: create folder of Artifacts
+      run: |	
+         mkdir -p ${{ github.workspace }}/artifact
+         echo Something pass to artifacts > ${{ github.workspace }}\artifact\world.txt:    
+        
         #  Example of creating artifacts
     - name:  production artifacts
       uses: actions/upload-artifact@v2
       with:	
         name: ${{ env.ARTIFACTS }}	
-        path: ${{ env.CORE_DIRECTORY }}\build\**\*
+        path: ${{ env.CORE_DIRECTORY }}\artifact\**\*
 
