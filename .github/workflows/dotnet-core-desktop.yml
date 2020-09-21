@@ -23,7 +23,8 @@ jobs:
       TEST_PROJECT_PATH: ${{ github.workspace }}\LinkedList\LinkedList.Test\LinkedList.Test.csproj                            
       PROJECT_NAME: ${{ github.workspace }}\LinkedList\LinkedList\LinkedList.csproj 
       PROJECT_PATH : ${{ github.workspace }}\LinkedList\LinkedList\
-      NETCORE_VERSION: '3.1.101' 
+      NETCORE_VERSION: '3.1.101'
+      APP_VERSION: '1.0.0'  
       BRANCH :  data_build                               
     steps:
     - name: Checkout
@@ -68,7 +69,7 @@ jobs:
       uses: s0/git-publish-subdir-action@master
       env:
         REPO: self
-        BRANCH: ${{env.BRANCH}}
+        BRANCH: ${{env.BRANCH}} - ${{env.NETCORE_VERSION}}
         FOLDER: ${{ env.CORE_DIRECTORY }}\build
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         
