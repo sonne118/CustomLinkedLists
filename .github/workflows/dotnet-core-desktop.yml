@@ -24,8 +24,8 @@ jobs:
       PROJECT_NAME: ${{ github.workspace }}\LinkedList\LinkedList\LinkedList.csproj 
       PROJECT_PATH : ${{ github.workspace }}\LinkedList\LinkedList\
       NETCORE_VERSION: '3.1.101'
-      APP_BUILD: '1.0.3' 
-      RELEASE_TAG: 'v1.0.6'
+      APP_BUILD: '1.0.4' 
+      RELEASE_TAG: 'v1.0.7'
       BRANCH :  data_build                            
     steps:
     - name: Checkout
@@ -77,8 +77,7 @@ jobs:
         
     - name: create folder of Artifacts
       run: |	
-         mkdir -p ${{ env.CORE_DIRECTORY }}\artifact
-         echo Something pass to artifacts > ${{ env.CORE_DIRECTORY }}\artifact\world.txt 
+         mkdir -p ${{ env.CORE_DIRECTORY }}\artifact        
          cd artifact 
      
     - name: Pack  
@@ -88,14 +87,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: nupkg
-        path: ${{ env.CORE_DIRECTORY }}\artifact\*.nupkg      
-        
-        #  Example of creating artifacts
-    - name:  production artifacts
-      uses: actions/upload-artifact@v2
-      with:	
-        name: ${{ env.ARTIFACTS }}	
-        path: ${{ env.CORE_DIRECTORY }}\artifact\**\*
+        path: ${{ env.CORE_DIRECTORY }}\artifact\*.nupkg              
         
     - name: Create Release
       id: create_release
