@@ -20,22 +20,22 @@ namespace LinkedList
             if (value == null)
                 throw new ArgumentNullException("This is not supported parameter");
 
-            SinglyNode<T> _SinglyNode = new SinglyNode<T>(value);
+            SinglyNode<T> _node = new SinglyNode<T>(value);
 
             if (head == null)
             {
-                head = _SinglyNode;
-                _SinglyNode.list = this;
+                head = _node;
+                _node.list = this;
             }
             else
             {
-                SinglyNode<T> SinglyNode = head;
-                while (SinglyNode.Next != null)
+                SinglyNode<T> node = head;
+                while (node.Next != null)
                 {
-                    SinglyNode = SinglyNode.Next;
+                    node = node.Next;
                 }
-                SinglyNode.Next = _SinglyNode;
-                _SinglyNode.list = this;
+                node.Next = _node;
+                _node.list = this;
             }
             count++;
         }
@@ -46,12 +46,12 @@ namespace LinkedList
             if (value == null)
                 throw new ArgumentNullException("This is not supported parameter");
 
-            SinglyNode<T> SinglyNode = head;
-            while (SinglyNode != null)
+            SinglyNode<T> node = head;
+            while (node != null)
             {
-                if (SinglyNode.Value.Equals(value))
-                    return SinglyNode;
-                SinglyNode = SinglyNode.Next;
+                if (node.Value.Equals(value))
+                    return node;
+                node = node.Next;
             }
             return null;
         }
@@ -66,22 +66,22 @@ namespace LinkedList
             if (isEmpty) return false;
 
             SinglyNode<T> prev = null;
-            for (SinglyNode<T> SinglyNode = head; SinglyNode != null; SinglyNode = SinglyNode.Next)
+            for (SinglyNode<T> node = head; node != null; node = node.Next)
             {
-                if (SinglyNode.Value.Equals(Value))
+                if (node.Value.Equals(Value))
                 {
                     if (prev == null)
                     {
-                        head = SinglyNode.Next;
+                        head = node.Next;
                     }
                     else
                     {
-                        prev.Next = SinglyNode.Next;
+                        prev.Next = node.Next;
                     }
                     count--;
                     return true;
                 }
-                prev = SinglyNode;
+                prev = node;
             }
             return false;
         }
@@ -92,14 +92,13 @@ namespace LinkedList
             if (count == 0)
                 return Array.Empty<T>();
 
-            SinglyNode<T> SinglyNode = head;
+            SinglyNode<T> node = head;
             T[] array = new T[count];
             int k = 0;
-            while (SinglyNode != null)
+            while (node != null)
             {
-                if (SinglyNode.Value != null)
-                    array[k] = SinglyNode.Value;
-                SinglyNode = SinglyNode.Next;
+                array[k] = node.Value;
+                node = node.Next;
                 k++;
             }
             return array;
@@ -108,11 +107,11 @@ namespace LinkedList
         // for interation when  we use foreach; realize interface IEnumerable
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
-            SinglyNode<T> SinglyNode = head;
-            while (SinglyNode != null)
+            SinglyNode<T> node = head;
+            while (node != null)
             {
-                yield return SinglyNode.Value;
-                SinglyNode = SinglyNode.Next;
+                yield return node.Value;
+                node = node.Next;
             }
         }
 

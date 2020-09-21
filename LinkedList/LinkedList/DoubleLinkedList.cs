@@ -19,10 +19,9 @@ namespace LinkedList
                 throw new ArgumentNullException("This is not supported parameter");
 
             DoubleNode<T> _node = new DoubleNode<T>(value);
-            _node.Next = null;
+          
             if (head == null)
-            {
-                _node.Prev = null;
+            {              
                 head = _node;
                 _node.list = this;
             }
@@ -35,12 +34,12 @@ namespace LinkedList
                 }
                 node.Next = _node;
                 _node.Prev = node;
-                _node.list = this;
-            }
+                _node.list = this; // you can check  Which owns this Node?
+            }                      // It can be used  afte exist Contain method
             count++;
         }
 
-        //to check  whether value have in list
+        //to check   whether value exists in list
         public DoubleNode<T> Contains(T value)
         {
             if (value == null)
@@ -101,9 +100,8 @@ namespace LinkedList
             T[] array = new T[count];
             int k = 0;
             while (node != null)
-            {
-                if (node.Value != null)
-                    array[k] = node.Value;
+            {               
+                array[k] = node.Value;
                 node = node.Next;
                 k++;
             }
@@ -121,7 +119,7 @@ namespace LinkedList
             }
         }
 
-        // realize interface IEnumerable
+        // implement interface IEnumerable
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable)this).GetEnumerator();

@@ -12,7 +12,7 @@
  
 2. Using this Linked list you can use several  Methods :
 
-    a.  Method Add(T value) - adding new object Node to linked list with value
+    a.  Method Add(T value) - This method add  new object Node to linked list with value
   
   	        slink.Add("Piter");
             slink.Add("Mike");
