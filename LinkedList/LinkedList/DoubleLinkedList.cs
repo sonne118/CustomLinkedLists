@@ -18,12 +18,12 @@ namespace LinkedList
             if (value == null)
                 throw new ArgumentNullException("This is not supported parameter");
 
-            DoubleNode<T> _node = new DoubleNode<T>(value);
+            DoubleNode<T> newNode = new DoubleNode<T>(value);
           
             if (head == null)
             {              
-                head = _node;
-                _node.list = this;
+                head = newNode;
+                newNode.list = this;
             }
             else
             {
@@ -32,9 +32,9 @@ namespace LinkedList
                 {
                     node = node.Next;
                 }
-                node.Next = _node;
-                _node.Prev = node;
-                _node.list = this; // you can check  Which owns this Node?
+                node.Next = newNode;
+                newNode.Prev = node;
+                newNode.list = this; // you can check  Which owns this Node?
             }                      // It can be used  after return result of Contain method
             count++;
         }

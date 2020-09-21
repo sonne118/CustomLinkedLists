@@ -20,12 +20,12 @@ namespace LinkedList
             if (value == null)
                 throw new ArgumentNullException("This is not supported parameter");
 
-            SinglyNode<T> _node = new SinglyNode<T>(value);
+            SinglyNode<T> newNode = new SinglyNode<T>(value);
 
             if (head == null)
             {
-                head = _node;
-                _node.list = this;
+                head = newNode;
+                newNode.list = this;
             }
             else
             {
@@ -34,8 +34,8 @@ namespace LinkedList
                 {
                     node = node.Next;
                 }
-                node.Next = _node;
-                _node.list = this;
+                node.Next = newNode;
+                newNode.list = this;
             }
             count++;
         }
