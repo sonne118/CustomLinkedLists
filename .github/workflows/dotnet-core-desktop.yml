@@ -18,14 +18,13 @@ jobs:
     # environment variables
     env:
       CORE_DIRECTORY : ${{ github.workspace }} 
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-      ARTIFACTS: LinkeList-artifact                                       
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}                                          
       TEST_PROJECT_PATH: ${{ github.workspace }}\LinkedList\LinkedList.Test\LinkedList.Test.csproj                            
       PROJECT_NAME: ${{ github.workspace }}\LinkedList\LinkedList\LinkedList.csproj 
       PROJECT_PATH : ${{ github.workspace }}\LinkedList\LinkedList\
       NETCORE_VERSION: '3.1.101'
       APP_BUILD: '1.0.4' 
-      RELEASE_TAG: 'v1.0.9'
+      RELEASE_TAG: 'v1.1.0'
       BRANCH :  data_build                            
     steps:
     - name: Checkout
