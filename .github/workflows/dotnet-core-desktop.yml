@@ -25,7 +25,7 @@ jobs:
       PROJECT_PATH : ${{ github.workspace }}\LinkedList\LinkedList\
       NETCORE_VERSION: '3.1.101'
       APP_BUILD: '1.0.3' 
-      REALEASE_TAG: 'v1.0.6'
+      RELEASE_TAG: 'v1.0.6'
       BRANCH :  data_build                            
     steps:
     - name: Checkout
@@ -82,7 +82,7 @@ jobs:
          cd artifact 
      
     - name: Pack  
-      run: dotnet pack -v normal -c Release --no-restore --include-symbols --include-source -p:PackageVersion=$env.REALEASE_TAG $env:PROJECT_NAME
+      run: dotnet pack -v normal -c Release --no-restore --include-symbols --include-source -p:PackageVersion='v1.0.6' $env:PROJECT_NAME
     
     - name: Upload Artifact    
       uses: actions/upload-artifact@v2
@@ -103,8 +103,8 @@ jobs:
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       with:
-          tag_name: ${{env.REALEASE_TAG }}
-          release_name: Release ${{ env.REALEASE_TAG }}
+          tag_name: ${{env.RELEASE_TAG }}
+          release_name: Release ${{ env.RELEASE_TAG }}
           body: |
             Changes in this new Release          
             - four Changes
