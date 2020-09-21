@@ -25,7 +25,7 @@ jobs:
       PROJECT_PATH : ${{ github.workspace }}\LinkedList\LinkedList\
       NETCORE_VERSION: '3.1.101'
       APP_BUILD: '1.0.4' 
-      RELEASE_TAG: 'v1.0.7'
+      RELEASE_TAG: 'v1.0.8'
       BRANCH :  data_build                            
     steps:
     - name: Checkout
