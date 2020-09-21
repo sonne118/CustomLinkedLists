@@ -78,8 +78,18 @@ jobs:
     - name: create folder of Artifacts
       run: |	
          mkdir -p ${{ env.CORE_DIRECTORY }}\artifact
-         echo Something pass to artifacts > ${{ env.CORE_DIRECTORY }}\artifact\world.txt
-         cd artifact    
+         #echo Something pass to artifacts > ${{ env.CORE_DIRECTORY }}\artifact\world.txt
+         cd artifact 
+     
+    - name: Pack
+      if: matrix.os == ' windows-latest'
+      run: dotnet pack -v normal -c Release --no-restore --include-symbols --include-source -p:PackageVersion=$GITHUB_RUN_ID $env:PROJECT_NAME
+    - name: Upload Artifact
+      if: matrix.os == ' windows-latest'
+      uses: actions/upload-artifact@v2
+      with:
+        name: nupkg
+        path: ${{ env.CORE_DIRECTORY }}\artifact\*.nupkg      
         
         #  Example of creating artifacts
     - name:  production artifacts
